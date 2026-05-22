@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/csharp_training_202605.props" />
+</Project>
