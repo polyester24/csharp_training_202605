@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/fullness/csharp_training_202605/csharp_training_202605.csproj": {}
+    "/home/fullness/csharp_training_202605/src/csharp_training_202605.csproj": {}
   },
   "projects": {
-    "/home/fullness/csharp_training_202605/csharp_training_202605.csproj": {
+    "/home/fullness/csharp_training_202605/src/csharp_training_202605.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/fullness/csharp_training_202605/csharp_training_202605.csproj",
+        "projectUniqueName": "/home/fullness/csharp_training_202605/src/csharp_training_202605.csproj",
         "projectName": "csharp_training_202605",
-        "projectPath": "/home/fullness/csharp_training_202605/csharp_training_202605.csproj",
+        "projectPath": "/home/fullness/csharp_training_202605/src/csharp_training_202605.csproj",
         "packagesPath": "/home/fullness/.nuget/packages/",
-        "outputPath": "/home/fullness/csharp_training_202605/obj/",
+        "outputPath": "/home/fullness/csharp_training_202605/src/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/fullness/.nuget/NuGet/NuGet.Config"
