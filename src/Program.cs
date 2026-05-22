@@ -1,7 +1,11 @@
-var builder = WebApplication.CreateBuilder(args);
+using csharp_training_202605.Presentations.Extensions;
+var builder = csharp_training_202605.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// アプリケーションの依存関係を構築する
+builder.Services.SettingDependencyInjection(builder.Configuration);
 
 var app = builder.Build();
 
