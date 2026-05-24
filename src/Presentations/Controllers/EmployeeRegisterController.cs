@@ -96,7 +96,7 @@ public class EmployeeRegisterController : Controller
     /// </summary>
     /// <param name="form"></param>
     /// <returns></returns>
-    [HttpPost("Regiter")]
+    [HttpPost("Register")]
     public IActionResult Register(EmployeeRegisterViewModel viewModel)
     {
         // EmployeeRegisterViewModelをシリアライズして、TempDataに保存する

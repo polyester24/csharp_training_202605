@@ -43,8 +43,8 @@ IConverter<Employee, EmployeeEntity>, IRestorer<Employee, EmployeeEntity>
     {
         var employee = new Employee(
             target.EmpId,
-            target.Email,
             target.EmpName,
+            target.Email,
             null
         );
         return employee;

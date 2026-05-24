@@ -47,4 +47,78 @@ public class EmployeeRepository : IEmployeeRepository
                 "従業員の永続化ができませんでした。", e);
         }
     }
+
+    /// <summary>
+    /// すべての従業員を取得する
+    /// </summary>
+    /// <returns>従業員のリスト</returns>
+    public List<Employee> FindAll()
+    {
+        try
+        {
+            var departmentMap = _context.Departments.ToDictionary(d => d.DeptId);
+            var entities = _context.Employees.ToList();
+            var results = new List<Employee>();
+
+            foreach (var entity in entities)
+            {
+                Department? department = null;
+                if (entity.DeptId.HasValue && departmentMap.TryGetValue(entity.DeptId.Value, out var deptEntity))
+                {
+                    department = new Department(deptEntity.DeptId, deptEntity.DeptName);
+                }
+
+                results.Add(new Employee(
+                    entity.EmpId,
+                    entity.EmpName,
+                    entity.Email,
+                    department));
+            }
+
+            return results;
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "従業員一覧を取得できませんでした。", e);
+        }
+    }
+
+    /// <summary>
+    /// 指定された従業員Idの従業員を取得する
+    /// </summary>
+    /// <param name="id">従業員Id</param>
+    /// <returns>従業員またはnull</returns>
+    public Employee? FindById(int id)
+    {
+        try
+        {
+            var entity = _context.Employees.FirstOrDefault(e => e.EmpId == id);
+            if (entity == null)
+            {
+                return null;
+            }
+
+            Department? department = null;
+            if (entity.DeptId.HasValue)
+            {
+                var deptEntity = _context.Departments.FirstOrDefault(d => d.DeptId == entity.DeptId.Value);
+                if (deptEntity != null)
+                {
+                    department = new Department(deptEntity.DeptId, deptEntity.DeptName);
+                }
+            }
+
+            return new Employee(
+                entity.EmpId,
+                entity.EmpName,
+                entity.Email,
+                department);
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "指定された従業員Idの従業員を取得できませんでした。", e);
+        }
+    }
 }
