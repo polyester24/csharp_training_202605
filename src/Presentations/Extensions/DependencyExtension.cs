@@ -85,5 +85,12 @@ public static class DependencyExtension
             provider =>
             new TempDataStore<EmployeeRegisterViewModel>("EmployeeRegisterViewModel")
         );
+        // 部署登録ViewModelをドメインオブジェクト:部署に変換するアダプター
+        services.AddScoped<DepartmentRegisterViewModelAdapter>();
+        // TempDataへのDepartmentRegisterViewの保存・復元するためのクラス
+        services.AddScoped(
+            provider =>
+            new TempDataStore<DepartmentRegisterViewModel>("DepartmentRegisterViewModel")
+        );
     }
 }

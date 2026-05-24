@@ -1,0 +1,21 @@
+@model csharp_training_202605.Presentations.ViewModels.DepartmentRegisterViewModel
+
+@{
+    ViewData["Title"] = "部署登録";
+}
+
+<h1>部署登録</h1>
+
+<form asp-action="Confirm" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">確認</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">一覧へ</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

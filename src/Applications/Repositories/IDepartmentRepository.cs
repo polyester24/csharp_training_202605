@@ -17,4 +17,10 @@ public interface IDepartmentRepository
     /// <param name="id">部署Id</param>
     /// <returns>取得して部署</returns>
     Department? FindById(int id);
+
+    /// <summary>
+    /// 部署を登録する
+    /// </summary>
+    /// <param name="department">登録対象の部署</param>
+    void Create(Department department);
 }
