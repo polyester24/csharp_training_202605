@@ -1,5 +1,5 @@
 using csharp_training_202605.Presentations.Extensions;
-var builder = csharp_training_202605.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
