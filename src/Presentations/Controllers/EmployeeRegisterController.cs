@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using csharp_training_202605.Applications.Services;
 using csharp_training_202605.Presentations.ViewModels;
+using csharp_training_202605.Applications.Repositories;
 namespace csharp_training_202605.Presentations.Controllers;
 /// <summary>
 /// 従業員登録コントローラ
@@ -25,6 +26,8 @@ public class EmployeeRegisterController : Controller
     /// </summary>
     private readonly TempDataStore<EmployeeRegisterViewModel> _empDataStore;
 
+    private readonly IEmployeeRepository _employeeRepository;
+
     /// <summary>
     /// コンストラクタ
     /// </summary>
@@ -36,12 +39,20 @@ public class EmployeeRegisterController : Controller
         ILogger<EmployeeRegisterController> logger,
         IEmployeeRegisterService employeeRegisterService,
         EmployeeRegisterViewModelAdapter employeeRegisterViewModelAdapter,
+        IEmployeeRepository employeeRepository,
         TempDataStore<EmployeeRegisterViewModel> empDataStore)
     {
         _logger = logger;
+        _employeeRepository = employeeRepository;
         _employeeRegisterService = employeeRegisterService;
         _adapter = employeeRegisterViewModelAdapter;
         _empDataStore = empDataStore;
+    }
+
+    public IActionResult Index()
+    {
+        var employees = _employeeRepository.FindAll();
+        return View(employees);
     }
 
     /// <summary>

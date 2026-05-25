@@ -6,19 +6,24 @@ using csharp_training_202605.Presentations.Controllers;
 
 namespace csharp_training_202605.Presentations.Controllers;
 
-public class DepartmentController : Controller
+[Route("DepartmentRegister")]
+
+public class DepartmentRegisterController : Controller
 {
+    private readonly ILogger<EmployeeRegisterController> _logger;
     private readonly IDepartmentRepository _departmentRepository;
     private readonly DepartmentRegisterViewModelAdapter _adapter;
     private readonly TempDataStore<DepartmentRegisterViewModel> _deptDataStore;
 
-    public DepartmentController(
+    public DepartmentRegisterController(
+        ILogger<EmployeeRegisterController> logger,
         IDepartmentRepository departmentRepository,
-        DepartmentRegisterViewModelAdapter adapter,
+        DepartmentRegisterViewModelAdapter departmentRegisterViewModelAdapter,
         TempDataStore<DepartmentRegisterViewModel> deptDataStore)
     {
+        _logger = logger;
         _departmentRepository = departmentRepository;
-        _adapter = adapter;
+        _adapter = departmentRegisterViewModelAdapter;
         _deptDataStore = deptDataStore;
     }
 
@@ -28,36 +33,36 @@ public class DepartmentController : Controller
         return View(departments);
     }
 
-    [HttpGet]
-    public IActionResult Create()
+    [HttpGet("Enter")]
+    public IActionResult Enter()
     {
         return View(new DepartmentRegisterViewModel());
     }
 
-    [HttpPost("Department/Confirm")]
+    [HttpPost("Confirm")]
     public IActionResult Confirm(DepartmentRegisterViewModel viewModel)
     {
         if (!ModelState.IsValid)
         {
-            return View("Create", viewModel);
+            return View("Enter", viewModel);
         }
         return View(viewModel);
     }
 
-    [HttpPost("Department/Register")]
+    [HttpPost("Register")]
     public IActionResult Register(DepartmentRegisterViewModel viewModel)
     {
         _deptDataStore.Save(this, viewModel);
         return RedirectToAction("Complete");
     }
 
-    [HttpGet("Department/Complete")]
+    [HttpGet("Complete")]
     public IActionResult Complete()
     {
         DepartmentRegisterViewModel? viewModel = _deptDataStore.Load(this);
         if (viewModel == null)
         {
-            return RedirectToAction("Create");
+            return RedirectToAction("Enter");
         }
 
         var department = _adapter.Restore(viewModel);

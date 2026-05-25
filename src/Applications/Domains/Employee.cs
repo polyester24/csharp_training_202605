@@ -10,7 +10,7 @@ public class Employee
     public string Email { get; private set; } = string.Empty; // メールアドレス
     public Department? Department { get; private set; } // 所属部署（null可）
 
-    private const int MaxLength = 20;
+    private const int MaxLength = 30;
 
     /// <summary>
     /// コンストラクタ

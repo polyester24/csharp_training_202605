@@ -15,6 +15,7 @@ public class EmployeeRegisterViewModel
     public string? Name { get; set; } = string.Empty;
     [Display(Name = "メールアドレス")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
+    [EmailAddress(ErrorMessage = "{0}の形式で入力してください。")]
     public string? Email { get; set; } = string.Empty;
     /// <summary>
     /// 所属部署
