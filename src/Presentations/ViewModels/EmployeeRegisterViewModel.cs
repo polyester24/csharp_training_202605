@@ -12,6 +12,8 @@ public class EmployeeRegisterViewModel
     /// </summary>
     [Display(Name = "氏名")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
+    [StringLength(30, ErrorMessage = "30文字以内で入力してください")]
+
     public string? Name { get; set; } = string.Empty;
     [Display(Name = "メールアドレス")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
