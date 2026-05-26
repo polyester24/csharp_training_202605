@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using csharp_training_202605.Applications.Domains;
+using csharp_training_202605.Applications.Services;
 using csharp_training_202605.Applications.Repositories;
 using csharp_training_202605.Presentations.ViewModels;
 using csharp_training_202605.Presentations.Controllers;
@@ -12,11 +13,13 @@ public class DepartmentRegisterController : Controller
 {
     private readonly ILogger<EmployeeRegisterController> _logger;
     private readonly IDepartmentRepository _departmentRepository;
+    private readonly IDepartmentRegisterService _departmentRegisterService;
     private readonly DepartmentRegisterViewModelAdapter _adapter;
     private readonly TempDataStore<DepartmentRegisterViewModel> _deptDataStore;
 
     public DepartmentRegisterController(
         ILogger<EmployeeRegisterController> logger,
+        IDepartmentRegisterService departmentRegisterService,
         IDepartmentRepository departmentRepository,
         DepartmentRegisterViewModelAdapter departmentRegisterViewModelAdapter,
         TempDataStore<DepartmentRegisterViewModel> deptDataStore)
@@ -66,7 +69,8 @@ public class DepartmentRegisterController : Controller
         }
 
         var department = _adapter.Restore(viewModel);
-        _departmentRepository.Create(department);
+        _departmentRegisterService.Register(department);
+        //_departmentRepository.Create(department);
 
         return View(viewModel);
     }
