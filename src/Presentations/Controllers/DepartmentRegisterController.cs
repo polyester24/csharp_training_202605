@@ -26,6 +26,7 @@ public class DepartmentRegisterController : Controller
     {
         _logger = logger;
         _departmentRepository = departmentRepository;
+        _departmentRegisterService = departmentRegisterService;
         _adapter = departmentRegisterViewModelAdapter;
         _deptDataStore = deptDataStore;
     }
@@ -62,15 +63,15 @@ public class DepartmentRegisterController : Controller
     [HttpGet("Complete")]
     public IActionResult Complete()
     {
-        DepartmentRegisterViewModel? viewModel = _deptDataStore.Load(this);
+        DepartmentRegisterViewModel? viewModel = null!;
+        viewModel = _deptDataStore.Load(this);
         if (viewModel == null)
         {
             return RedirectToAction("Enter");
         }
 
-        var department = _adapter.Restore(viewModel);
+        var department = _adapter.Restore(viewModel!);
         _departmentRegisterService.Register(department);
-        //_departmentRepository.Create(department);
 
         return View(viewModel);
     }
