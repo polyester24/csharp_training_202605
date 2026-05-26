@@ -7,6 +7,7 @@ using csharp_training_202605.Infrastructures.Context;
 using csharp_training_202605.Infrastructures.Repositories;
 using csharp_training_202605.Presentations.Controllers;
 using csharp_training_202605.Presentations.ViewModels;
+using csharp_training_202605.Applications.Domains;
 namespace csharp_training_202605.Presentations.Extensions;
 /// <summary>
 /// 依存定義および依存性注入クラス
@@ -69,6 +70,7 @@ public static class DependencyExtension
     {
         // 従業員登録サービスインターフェイスの実装
         services.AddScoped<IEmployeeRegisterService, EmployeeRegisterService>();
+        services.AddScoped<IDepartmentRegisterService, DepartmentRegisterService>();
     }
 
     /// <summary>

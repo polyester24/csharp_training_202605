@@ -1,0 +1,25 @@
+@model csharp_training_202605.Presentations.ViewModels.DepartmentRegisterViewModel
+
+@{
+    ViewData["Title"] = "部署登録確認";
+}
+
+<h1>部署登録確認</h1>
+
+<div class="alert alert-info">
+    以下の内容で部署を登録します。よろしいですか？
+</div>
+
+<table class="table table-borderless">
+    <tr>
+        <th style="width: 200px;">部署名</th>
+        <td>@Model.Name</td>
+    </tr>
+</table>
+
+<form asp-action="Register" asp-controller="DepartmentRegister" method="post">
+    <input type="hidden" asp-for="Name" />
+
+    <button type="submit" class="btn btn-primary">登録</button>
+    <a asp-action="Enter" class="btn btn-secondary ms-2">戻る</a>
+</form>

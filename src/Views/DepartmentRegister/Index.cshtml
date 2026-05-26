@@ -1,0 +1,38 @@
+@model List<csharp_training_202605.Applications.Domains.Department>
+
+@{
+    ViewData["Title"] = "部署一覧";
+}
+<h2 class="text-center mt-4">@ViewData["Title"]</h2>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-info">登録済みの部署はありません。</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>部署Id</th>
+                    <th>部署名</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var department in Model)
+                {
+                    <tr>
+                        <td>@department.Id</td>
+                        <td>@department.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="text-center">
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">
+                メニューに戻る
+            </a>
+        </div>
+    </div>
+}
