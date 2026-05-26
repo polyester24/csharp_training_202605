@@ -103,8 +103,10 @@ public class EmployeeRepositoryTests
         //var result = _repository.FindAll();
         var actual = _repository.FindById(9);
         //var find = result.Where(d => d.Name == "aaa");
-        AreEqual(("a", "b", _drepository.FindById(1)), (actual?.Name, actual?.Email, actual?.Department));
-
+        IsNotNull(actual);
+        AreEqual("a", actual?.Name);
+        AreEqual("b", actual?.Email);
+        AreEqual(_drepository.FindById(1), actual?.Department);
     }
 
 }
