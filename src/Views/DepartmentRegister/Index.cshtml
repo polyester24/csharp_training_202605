@@ -3,12 +3,7 @@
 @{
     ViewData["Title"] = "部署一覧";
 }
-
-<h1>部署一覧</h1>
-
-<p>
-    <a asp-controller="DepartmentRegister" a asp-action="Enter" class="btn btn-primary">部署登録</a>
-</p>
+<h2 class="text-center mt-4">@ViewData["Title"]</h2>
 
 @if (Model.Count == 0)
 {
@@ -34,5 +29,10 @@ else
                 }
             </tbody>
         </table>
+        <div class="text-center">
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">
+                メニューに戻る
+            </a>
+        </div>
     </div>
 }
