@@ -23,4 +23,6 @@ public interface IDepartmentRepository
     /// </summary>
     /// <param name="department">登録対象の部署</param>
     void Create(Department department);
+
+    void Remove(Department department);
 }

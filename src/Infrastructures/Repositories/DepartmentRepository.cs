@@ -88,4 +88,19 @@ public class DepartmentRepository : IDepartmentRepository
                 "部署の登録に失敗しました。", e);
         }
     }
+
+    public void Remove(Department department)
+    {
+        try
+        {
+            var entity = _adapter.Convert(department);
+            _context.Departments.Remove(entity);
+            _context.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "部署の登録に失敗しました。", e);
+        }
+    }
 }
