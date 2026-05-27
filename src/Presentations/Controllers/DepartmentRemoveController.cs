@@ -45,7 +45,7 @@ public class DepartmentRemoveController : Controller
             viewModel = new DepartmentRemoveViewModel();
         }
         PopulateDepartments(viewModel);
-        return View(new DepartmentRemoveViewModel());
+        return View(viewModel);
     }
 
     [HttpPost("Confirm")]
@@ -74,7 +74,7 @@ public class DepartmentRemoveController : Controller
         {
             return RedirectToAction("Enter");
         }
-
+        viewModel.DeptName = "削除用データ";
         var department = _adapter.Restore(viewModel!);
         _departmentRemoveService.Remove(department);
 

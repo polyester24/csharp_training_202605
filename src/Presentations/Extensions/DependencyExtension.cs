@@ -71,6 +71,7 @@ public static class DependencyExtension
         // 従業員登録サービスインターフェイスの実装
         services.AddScoped<IEmployeeRegisterService, EmployeeRegisterService>();
         services.AddScoped<IDepartmentRegisterService, DepartmentRegisterService>();
+        services.AddScoped<IDepartmentRemoveService, DepartmentRemoveService>();
     }
 
     /// <summary>
@@ -93,6 +94,12 @@ public static class DependencyExtension
         services.AddScoped(
             provider =>
             new TempDataStore<DepartmentRegisterViewModel>("DepartmentRegisterViewModel")
+        );
+        services.AddScoped<DepartmentRemoveViewModelAdapter>();
+        // TempDataへのDepartmentRegisterViewの保存・復元するためのクラス
+        services.AddScoped(
+            provider =>
+            new TempDataStore<DepartmentRemoveViewModel>("DepartmentRemoveViewModel")
         );
     }
 }

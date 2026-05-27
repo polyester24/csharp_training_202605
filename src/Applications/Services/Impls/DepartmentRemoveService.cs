@@ -21,6 +21,15 @@ public class DepartmentRemoveService : IDepartmentRemoveService
     /// ドメインオブジェクト:部署のCRUD操作インターフェイス
     /// </summary>
     private readonly IDepartmentRepository _departmentRepository;
+    public DepartmentRemoveService(
+       AppDbContext context,
+       IEmployeeRepository employeeRepository,
+       IDepartmentRepository departmentRepository)
+    {
+        _context = context;
+        _employeeRepository = employeeRepository;
+        _departmentRepository = departmentRepository;
+    }
 
     public void Remove(Department department)
     {
@@ -28,7 +37,7 @@ public class DepartmentRemoveService : IDepartmentRemoveService
         {
             // トランザクションの開始
             _context.Database.BeginTransaction();
-            // 従業員の登録
+
             _departmentRepository.Remove(department);
             // トランザクションのコミット
             _context.Database.CommitTransaction();

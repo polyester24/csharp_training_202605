@@ -100,7 +100,7 @@ public class DepartmentRepository : IDepartmentRepository
         catch (Exception e)
         {
             throw new InternalException(
-                "部署の登録に失敗しました。", e);
+                "部署の削除に失敗しました。", e);
         }
     }
 }

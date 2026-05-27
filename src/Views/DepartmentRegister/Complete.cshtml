@@ -4,24 +4,28 @@
     ViewData["Title"] = "部署登録完了";
 }
 
-<h1>部署登録完了</h1>
+<h2 class="text-center mt-4">@ViewData["Title"]</h2>
 
-<div class="alert alert-success">
-    部署の登録が完了しました。
-</div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
 
-<table class="table table-borderless">
-    <tr>
-        <th style="width: 200px;">登録内容</th>
-        <td></td>
-    </tr>
-    <tr>
-        <th>部署名</th>
-        <td>@Model.Name</td>
-    </tr>
-</table>
+        <div class="alert alert-success">
+            部署の登録が完了しました。
+        </div>
 
-<p>
-    <a asp-action="Index" class="btn btn-primary">部署一覧を表示</a>
-    <a asp-action="Enter" class="btn btn-outline-primary ms-2">別の部署を登録</a>
-</p>
+        <table class="table table-borderless">
+            <tr>
+                <th style="width: 200px;">登録内容</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>部署名</th>
+                <td>@Model.Name</td>
+            </tr>
+        </table>
+
+        <p>
+            <div class="text-center">
+                <a asp-action="Index" class="btn btn-primary">部署一覧を表示</a>
+                <a asp-action="Enter" class="btn btn-outline-primary ms-2">別の部署を登録</a>
+            </p>
