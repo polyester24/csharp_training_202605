@@ -53,6 +53,16 @@ public class EmployeeRegisterService : IEmployeeRegisterService
         return result;
     }
 
+    public Employee GetByEmpId(int id)
+    {
+        var result = _employeeRepository.FindById(id)!;
+        if (result == null)
+        {
+            throw new NotFoundException($"部署Id{id}に該当する部署は存在しません");
+        }
+        return result;
+    }
+
     /// <summary>
     /// すべての部署を取得する
     /// </summary>
@@ -60,6 +70,11 @@ public class EmployeeRegisterService : IEmployeeRegisterService
     public List<Department> GetDepartments()
     {
         return _departmentRepository.FindAll();
+    }
+
+    public List<Employee> GetEmployees()
+    {
+        return _employeeRepository.FindAll();
     }
 
     /// <summary>

@@ -16,7 +16,7 @@ public class Department
     public Department(int? id, string? name)
     {
         // 部署名のルール検証
-        validateDepartmentName(name);
+        //validateDepartmentName(name);
         Id = id;
         Name = name;
     }

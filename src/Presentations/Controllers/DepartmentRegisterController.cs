@@ -75,4 +75,13 @@ public class DepartmentRegisterController : Controller
 
         return View(viewModel);
     }
+    [HttpPost("Back")]
+    public IActionResult Back(DepartmentRegisterViewModel viewModel)
+    {
+        _logger.LogInformation("[戻る]ボタンクリック:{0}", viewModel!.ToString());
+        // EmployeeRegisterViewModelをシリアライズして、TempDataに保存する
+        _deptDataStore.Save(this, viewModel);
+        // 入力画面を出力するアクションメソッドにリダイレクトする
+        return RedirectToAction("Enter");
+    }
 }

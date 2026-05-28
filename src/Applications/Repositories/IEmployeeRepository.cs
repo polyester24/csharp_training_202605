@@ -23,4 +23,6 @@ public interface IEmployeeRepository
     /// <param name="id">従業員Id</param>
     /// <returns>従業員またはnull</returns>
     Employee? FindById(int id);
+    void Remove(Employee employee);
+
 }

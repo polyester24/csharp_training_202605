@@ -121,4 +121,18 @@ public class EmployeeRepository : IEmployeeRepository
                 "指定された従業員Idの従業員を取得できませんでした。", e);
         }
     }
+    public void Remove(Employee employee)
+    {
+        try
+        {
+            var entity = _adapter.Convert(employee);
+            _context.Employees.Remove(entity);
+            _context.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "部署の削除に失敗しました。", e);
+        }
+    }
 }

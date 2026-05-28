@@ -72,6 +72,7 @@ public static class DependencyExtension
         services.AddScoped<IEmployeeRegisterService, EmployeeRegisterService>();
         services.AddScoped<IDepartmentRegisterService, DepartmentRegisterService>();
         services.AddScoped<IDepartmentRemoveService, DepartmentRemoveService>();
+        services.AddScoped<IEmployeeRemoveService, EmployeeRemoveService>();
     }
 
     /// <summary>
@@ -100,6 +101,12 @@ public static class DependencyExtension
         services.AddScoped(
             provider =>
             new TempDataStore<DepartmentRemoveViewModel>("DepartmentRemoveViewModel")
+        );
+        services.AddScoped<EmployeeRemoveViewModelAdapter>();
+        // TempDataへのDepartmentRegisterViewの保存・復元するためのクラス
+        services.AddScoped(
+            provider =>
+            new TempDataStore<EmployeeRemoveViewModel>("EmployeeRemoveViewModel")
         );
     }
 }

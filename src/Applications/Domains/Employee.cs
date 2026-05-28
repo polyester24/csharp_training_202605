@@ -20,7 +20,7 @@ public class Employee
     /// <param name="department">所属部署</param>
     public Employee(int? id, string name, string email, Department? department)
     {
-        ValidateName(name);
+        //ValidateName(name);
         Id = id;
         Name = name;
         Email = email;

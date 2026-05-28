@@ -1,0 +1,21 @@
+@model csharp_training_202605.Presentations.ViewModels.EmployeeRemoveViewModel
+
+@{
+    ViewData["Title"] = "従業員削除完了";
+}
+
+<h2 class="text-center mt-4">@ViewData["Title"]</h2>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+
+        <div class="alert alert-success">
+            部署の削除が完了しました。
+        </div>
+
+
+
+        <div class="text-center">
+            <a asp-action="Index" asp-controller="EmployeeRegister" class="btn btn-primary">従業員一覧を表示</a>
+            <a asp-action="Enter" class="btn btn-outline-primary ms-2">別の従業員を削除</a>
+        

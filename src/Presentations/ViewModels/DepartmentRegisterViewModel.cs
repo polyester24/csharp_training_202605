@@ -11,4 +11,8 @@ public class DepartmentRegisterViewModel
     [Required(ErrorMessage = "{0}は入力必須です。")]
     [StringLength(20, ErrorMessage = "{0}は{1}文字以内で入力してください。")]
     public string? Name { get; set; }
+    public override string ToString()
+    {
+        return $"Name={Name}";
+    }
 }
