@@ -55,6 +55,10 @@ public class DepartmentRemoveController : Controller
         {
             return View("Enter", viewModel);
         }
+        var department = _employeeRegisterService.GetById(viewModel.DeptId ?? 0);
+        _logger.LogInformation($"部署Id:{viewModel.DeptId ?? 0}の部署を取得する");
+        // ViewModelに部署名を設定する
+        viewModel.DeptName = department.Name;
         return View(viewModel);
     }
 
